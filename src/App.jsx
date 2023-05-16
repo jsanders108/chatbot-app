@@ -71,7 +71,7 @@ function App() {
       <main>
         <section className="chatbot-container">
           <div className="chatbot-header">
-            <img src="src/chatbot-logo.png" className="logo" alt="Chatbot Logo" />
+            <img src="./src/chatbot-logo.png" className="logo" alt="Chatbot Logo" />
             <h1>GPT-3 ChatBot</h1>
             <h2>Ask me anything!</h2>
           </div>
