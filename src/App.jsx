@@ -1,6 +1,7 @@
 import { Configuration, OpenAIApi } from "openai";
 import { useState, useRef, useEffect } from "react";
 import logoImage from "./chatbot-logo.png"
+import submitImage from "./send-btn-icon.png"
 
 function App() {
   const [promptInput, setPromptInput] = useState("");
@@ -74,7 +75,7 @@ function App() {
           <div className="chatbot-header">
             <img src={logoImage} className="logo" alt="Chatbot Logo" />
             <h1>GPT-3 ChatBot</h1>
-            <h2>TEST Ask me anything!</h2>
+            <h2>Ask me anything!</h2>
           </div>
           <div className="speech speech-ai">
               How can I help you?
@@ -96,7 +97,7 @@ function App() {
               disabled={questionCount >= 5}
             >
               <img 
-                src="send-btn-icon.png" 
+                src={submitImage} 
                 className="send-btn-icon"
                 alt="Send Button"
               />
