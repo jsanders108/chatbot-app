@@ -1,6 +1,6 @@
 import { Configuration, OpenAIApi } from "openai";
 import { useState, useRef, useEffect } from "react";
-import { logoImage } from "./src/chatbot-logo.png"
+import logoImage from "/chatbot-logo.png"
 
 
 function App() {
@@ -75,7 +75,7 @@ function App() {
           <div className="chatbot-header">
             <img src={logoImage} className="logo" alt="Chatbot Logo" />
             <h1>GPT-3 ChatBot</h1>
-            <h2>Ask me anything!</h2>
+            <h2>TEST Ask me anything!</h2>
           </div>
           <div className="speech speech-ai">
               How can I help you?
