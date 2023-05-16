@@ -72,9 +72,9 @@ function App() {
       <main>
         <section className="chatbot-container">
           <div className="chatbot-header">
-            <img src="/chatbot-logo.png" className="logo" alt="Chatbot Logo" />
+            <img src="/src/chatbot-logo.png" className="logo" alt="Chatbot Logo" />
             <h1>GPT-3 ChatBot</h1>
-            <h2>Ask me anything!</h2>
+            <h2>TEST Ask me anything!</h2>
           </div>
           <div className="speech speech-ai">
               How can I help you?
