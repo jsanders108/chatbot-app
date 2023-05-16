@@ -1,6 +1,6 @@
 # AI ChatBot App (powered by GPT-3)
 
-This React app connects to the GPT-3 API and allows users to ask questions and recieve AI responses.  
+This React app connects to the GPT-3 API and allows users to ask questions and recieve artificial intelligence (AI) responses.  
 
 ## Description
 
