@@ -1,6 +1,6 @@
 import { Configuration, OpenAIApi } from "openai";
 import { useState, useRef, useEffect } from "react";
-import { logoImage } from "./src/chatbot-logo.png";
+import { logoImage } from "/chatbot-logo.png";
 
 function App() {
   const [promptInput, setPromptInput] = useState("");
