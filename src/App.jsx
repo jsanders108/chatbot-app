@@ -103,7 +103,7 @@ function App() {
               />
             </button>
           </form>
-          <h3 className="disclaimer-1">*5 question limit (due to costs incurred using the ChatGPT API)</h3>
+          <h3 className="disclaimer-1">*Not currently connected to ChatGPT API due to high usage cost considerations*</h3>
           {questionCount >= 5 && (
             <h3 className="disclaimer-2">You have reached the question limit (5 questions).</h3>
           )}
