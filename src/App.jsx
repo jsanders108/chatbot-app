@@ -1,71 +1,71 @@
-import { Configuration, OpenAIApi } from "openai";
-import { useState, useRef, useEffect } from "react";
+import { Configuration, OpenAIApi } from "openai"
+import { useState, useRef, useEffect } from "react"
 import logoImage from "./chatbot-logo.png"
 import submitImage from "./send-btn-icon.png"
 
 function App() {
-  const [promptInput, setPromptInput] = useState("");
-  const [response, setResponse] = useState("");
-  const [questionCount, setQuestionCount] = useState(0);
-  const chatbotConversation = useRef(null);
-  const userInput = useRef(null);
-  const api = import.meta.env.VITE_REACT_APP_CHATGPT_API;
+  const [promptInput, setPromptInput] = useState("")
+  const [response, setResponse] = useState("")
+  const [questionCount, setQuestionCount] = useState(0)
+  const chatbotConversation = useRef(null)
+  const userInput = useRef(null)
+  const api = import.meta.env.VITE_REACT_APP_CHATGPT_API
   const configuration = new Configuration({
     apiKey: api
-  });
-  const openai = new OpenAIApi(configuration);
+  })
+  const openai = new OpenAIApi(configuration)
 
   useEffect(() => {
     if (questionCount >= 5) {
-      userInput.current.disabled = true;
-      userInput.current.placeholder = "You have reached the question limit.";
+      userInput.current.disabled = true
+      userInput.current.placeholder = "You have reached the question limit."
     }
-  }, [questionCount]);
+  }, [questionCount])
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     if (questionCount >= 5) {
-      return;
+      return
     }
 
-    const newPrompt = `${promptInput}\nResponse: ${response}\n`;
+    const newPrompt = `${promptInput}\nResponse: ${response}\n`
     const apiResponse = await openai.createCompletion({
       prompt: newPrompt,
       model: "text-davinci-003",
       temperature: 0,
       max_tokens: 1000,
-    });
-    const message = apiResponse.data.choices[0].text;
-    setPromptInput("");
-    setResponse(message);
-    setQuestionCount((prevCount) => prevCount + 1);
-    renderTypewriterText(message);
-  };
+    })
+    const message = apiResponse.data.choices[0].text
+    setPromptInput("")
+    setResponse(message)
+    setQuestionCount((prevCount) => prevCount + 1)
+    renderTypewriterText(message)
+  }
 
   function renderTypewriterText(text) {
-    const newSpeechBubble = document.createElement('div');
-    newSpeechBubble.classList.add('speech', 'speech-ai', 'blinking-cursor');
-    chatbotConversation.current.appendChild(newSpeechBubble);
-    let i = 0;
+    const newSpeechBubble = document.createElement('div')
+    newSpeechBubble.classList.add('speech', 'speech-ai', 'blinking-cursor')
+    chatbotConversation.current.appendChild(newSpeechBubble)
+    let i = 0
     const interval = setInterval(() => {
-      newSpeechBubble.textContent += text.slice(i-1, i);
+      newSpeechBubble.textContent += text.slice(i-1, i)
       if (text.length === i) {
-        clearInterval(interval);
-        newSpeechBubble.classList.remove('blinking-cursor');
+        clearInterval(interval)
+        newSpeechBubble.classList.remove('blinking-cursor')
       }
-      i++;
-      chatbotConversation.current.scrollTop = chatbotConversation.current.scrollHeight;
-    }, 50);
+      i++
+      chatbotConversation.current.scrollTop = chatbotConversation.current.scrollHeight
+    }, 50)
   }
 
   function renderUserInput() {
-    const newSpeechBubble = document.createElement('div');
-    newSpeechBubble.classList.add('speech', 'speech-human');
-    chatbotConversation.current.appendChild(newSpeechBubble);
-    newSpeechBubble.textContent = userInput.current.value;
-    userInput.current.value = '';
-    chatbotConversation.current.scrollTop = chatbotConversation.current.scrollHeight;
+    const newSpeechBubble = document.createElement('div')
+    newSpeechBubble.classList.add('speech', 'speech-human')
+    chatbotConversation.current.appendChild(newSpeechBubble)
+    newSpeechBubble.textContent = userInput.current.value
+    userInput.current.value = ''
+    chatbotConversation.current.scrollTop = chatbotConversation.current.scrollHeight
   }
 
   return (
@@ -113,4 +113,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
